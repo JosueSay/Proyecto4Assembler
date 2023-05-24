@@ -14,19 +14,43 @@
 ;|| DATA ||
 ;==========
 .data
+	;======================================
+	; || Variables para mostrar opciones ||
+	;======================================
+	msg_bienvenida BYTE "Bienvenido al juego de ranas. Escoge la opcion que desees:".
+	respuesta_menu BYTE 0
+	msg_opcion1 BYTE "Opcion 1. Ingresar al juego"
+	msg_opcion2 BYTE "Opcion 2. Brindar instrucciones"
+	msg_opcion3 BYTE "Opcion 3. Salir del juego"
 	
-	; Inicio
-	msg_estado1 DWORD "========================================="
-	msg_estado1 DWORD "|| a || b || c ||---|| d || e || f || g ||"
-	msg_estado1 DWORD "========================================="
-
-
-	; Cambio
-	msg_estado1 DWORD "========================================="
-	msg_estado1 DWORD "|| %s || %s || %s ||---|| %s || %s || %s || %s ||"
-	msg_estado1 DWORD "========================================="
-
-
+	
+	;==========================================
+	;|| Variables para mostrar instrucciones ||
+	;==========================================
+	msg_instrucciones BYTE "El juego consta de mover 3 ranas del mismo color al lado contrario de su posición inicial. "
+	 
+	msg_estadoI1 BYTE "======================================",0
+	msg_estadoI2 BYTE "|| a || b || c ||---|| d || e || f ||",0
+	msg_estadoI3 BYTE "======================================",0
+	
+	lista_msg_estados DWORD msg_estadoI1, msg_estadoI2, msg_estadoI3
+	
+	
+	;===========
+	;|| RANAS ||
+	;===========
+	; Ranas de la izquierda
+	ranaB1 BYTE "a",0
+	ranaB2 BYTE "b",0
+	ranaB3 BYTE "c",0
+	; Espacio entre ranas
+	espacio
+	; Ranas de la derecha
+	ranaC1 BYTE "d",0
+	ranaC2 BYTE "e",0
+	ranaC3 BYTE "f",0
+	
+	
 
 ;==========
 ;|| CODE ||
@@ -45,9 +69,10 @@ main proc
 
 
 
+	
 
-
-
+	finalizar:
+		call exit
 
 	ret
 main endp
