@@ -17,13 +17,36 @@
 	;======================================
 	; || Variables para mostrar opciones ||
 	;======================================
+
+	principal   db "                  _                                                   ",0Ah
+				db "             .''.' \    _  __                                         ",0Ah
+				db " ___         './    '. ' `'  `                                        ",0Ah
+				db "    '._______.'       \                   O...O                       ",0Ah
+				db "                       '.__________      (-----)                      ",0Ah
+				db "                                   '-.__ (_[O]_)                      ",0Ah
+				db " ________________________________________==___==__________________    ",0Ah
+				db "                                      __ ==___==                      ",0Ah
+				db "                         __________.-'   (_[O]_)                      ",0Ah   
+				db "      _______          .'                (-----)   GRUPO 6            ",0Ah   
+				db " ___.'       '.       /                   O...O      JUEGO DE RANAS   ",0Ah
+				db "             .'\    .' ._,.__,                                        ",0Ah
+				db "             '..'._/                                                  ",0Ah
+				db "                                                                      ",0Ah
+				db 0
+
+	verificadorganarExtremo1 DWORD 0
+	verificadorganarExtremo2 DWORD 0
+
+	opcionnovalida byte "OPCION NO VALIDA",0Ah,0
 	ranaactual DWORD 0
 	opcionmenu2 DWORD ?
 	saltodelinea byte " ",0Ah,0
 	msg_bienvenida BYTE "Bienvenido al juego de ranas. Escoge la opcion que desees:",0Ah ,0
-	msg_opcion1 BYTE "Opcion 1. Ingresar al juego", 0Ah, 0
-	msg_opcion2 BYTE "Opcion 2. Brindar instrucciones",0Ah ,0
-	msg_opcion3 BYTE "Opcion 3. Salir del juego", 0Ah, 0
+	msg_opcion db "Opcion 1. Nuevo Juego", 0Ah
+	            db "Opcion 2. Brindar instrucciones",0Ah
+	            db "Opcion 3. Salir del juego", 0Ah
+				db 0
+	
 	respuesta_menu BYTE 0
 	
 	n DWORD 7 ;numero de ranas
@@ -31,19 +54,24 @@
 	;==========================================
 	;|| Variables para mostrar instrucciones ||
 	;==========================================
-	msg_instrucciones1 BYTE "El juego consta de mover 3 ranas del mismo color al lado contrario de su posición inicial.", 0Ah,0
-	msg_instrucciones2 BYTE "Las ranas del color AZUL son 'a' y las ranas de color ROJO son 'b'.", 0Ah,0
-	msg_instrucciones3 BYTE "Toma en cuenta lo siguiente:", 0Ah,0
-	msg_instrucciones5 BYTE "I.Solo pueden moverse un espacio a la vez, y debe seleccionar el numero de posicion para saltar.", 0Ah,0
-	msg_instrucciones6 BYTE "III Las ranas de distinta especie pueden saltarse otra rana si existe un espacio vacio adelante.", 0Ah,0
-	msg_instrucciones7 BYTE "III.Sin embargo, las ranas de la misma especie no pueden saltarse entre ellas.", 0Ah,0
-	selection BYTE "Seleccione una opcion: ",0
+	msg_instrucciones1 db "El juego consta de mover 3 ranas del mismo color al lado contrario de su posicion inicial.",0Ah
+	                   db "Las ranas del color AZUL son 'a' y las ranas de color ROJO son 'b'.",0Ah
+	                   db "Toma en cuenta lo siguiente:", 0Ah
+	                   db "I.Solo pueden moverse un espacio a la vez, y debe seleccionar el numero de posicion para saltar.", 0Ah
+	                   db "III Las ranas de distinta especie pueden saltarse otra rana si existe un espacio vacio adelante.", 0Ah
+	                   db "III.Sin embargo, las ranas de la misma especie no pueden saltarse entre ellas.", 0Ah
+					   db 0
+	
 	ingreso BYTE "Ingrese la posicion de la rana (Es el numero debajo de la letra): ",0
 	msg_posiciones BYTE "|| 0 |||| 1 |||| 2 |||| 3 |||| 4 |||| 5 |||| 6 ||",0Ah,0
-	hacersaltar BYTE "Opcion 1. Hacer Saltar rana",0Ah,0
-	hacersalir BYTE "Opcion 2. Volver a menu principal",0Ah,0
+	hacersaltar db "Opcion 1. Hacer Saltar rana",0Ah
+	            db "Opcion 2. Volver a menu principal",0Ah
+				db "Seleccione una opcion: ",0
+				db 0
 	listanumer DWORD 1,1,1,0,2,2,2
-	msg_movnovalido BYTE "Movimiento no valido",0Ah,0
+	arrayreseteador DWORD 1,1,1,0,2,2,2
+
+	msg_movnovalido BYTE "==========[MOVIMIENTO NO VALIDO]==========",0Ah,0
 
 	;===========
 	;|| RANAS ||
@@ -57,6 +85,23 @@
 	espaciado BYTE "||",0
 	; Constante de formato para la función scanf
 	fmt db "%d", 0
+
+	frogs  db "                  ",0Ah
+	       db " 0...0      -___- ",0Ah
+		   db "(-----)    (  O  )",0Ah
+		   db "(_[A]_)    (_[B]_)",0Ah
+		   db "==   ==    __   __",0Ah
+		   db "                  ",0Ah
+		   db 0
+	
+	frogswins  db "                  ",0Ah
+	           db "    !GANASTE¡     ",0Ah
+	           db " ^...^      ^___^ ",0Ah
+		       db "(  U  )    (  U  )",0Ah
+		       db "(_[B]_)    (_[A]_)",0Ah
+		       db "==   ==    __   __",0Ah
+			   db "                  ",0Ah
+		       db 0
 	
 ;==========
 ;|| CODE ||
@@ -73,6 +118,10 @@ main proc
 	extrn scanf:near
 	extrn exit:near
 
+	push offset principal
+	call printf
+	add esp, 4
+
 menuprincial:
 
 
@@ -84,15 +133,7 @@ menuprincial:
 	call printf
 	add esp, 4
 
-	push OFFSET msg_opcion1
-	call printf
-	add esp, 4
-
-	push OFFSET msg_opcion2
-	call printf
-	add esp, 4
-
-	push OFFSET msg_opcion3
+	push OFFSET msg_opcion
 	call printf
 	add esp, 4
 
@@ -127,14 +168,39 @@ OPCION1:
     push offset fmt
     call scanf
 	add esp, 8
-	
-	.IF opcionmenu2 == 1 ;si presiona 1 la devuelve al menu principal
-		call JUEGO
-		jmp OPCION1
+
+	.IF opcionmenu2 == 1 ;si presiona 1 empieza el juego
+		call JUEGO ;logica del juego
+		call ConfirmGameOver ;miramos si hay gameover
+
+		.IF verificadorganarExtremo1 == 6 ;verificamos que las ranas B llegaran al otro extremo
+			.IF verificadorganarExtremo2 == 3 ; verificamos que las ranas A llegaran al otro extremo
+				jmp GANASTE ;si todas las ranas pasaron gano
+			.ELSE
+				jmp OPCION1
+			.ENDIF
+		.ELSE
+			jmp OPCION1	
+		.ENDIF
+		
 
 	.ELSEIF opcionmenu2 == 2 ;si presiona 2 vuelve al menu principal
+		call resetarray
 		jmp menuprincial
+	.ELSE ;si eligio una opcion que nada que ver volvemos a repetir todo
+		push offset opcionnovalida
+		call printf
+		add esp, 4
+		jmp OPCION1
 	.ENDIF
+
+
+GANASTE:
+	call arrayPrint
+	push offset frogswins
+	call printf
+	add esp,4
+	jmp menuprincial
 
 
 	finalizar:
@@ -143,32 +209,16 @@ OPCION1:
 	ret
 main endp
 
+;==============================
+;CREADO POR: Josue Say
+;Imprime las instrucciones
+;==============================
 Printinstrucciones proc ;subrutina
 	push ebp
     mov ebp, esp
     push esi
 	
 	push OFFSET msg_instrucciones1
-	call printf
-	add esp, 4
-	
-	push OFFSET msg_instrucciones2
-	call printf
-	add esp, 4
-
-	push OFFSET msg_instrucciones3
-	call printf
-	add esp, 4
-	
-	push OFFSET msg_instrucciones5
-	call printf
-	add esp, 4
-	
-	push OFFSET msg_instrucciones6
-	call printf
-	add esp, 4
-
-	push OFFSET msg_instrucciones7
 	call printf
 	add esp, 4
 
@@ -178,8 +228,11 @@ Printinstrucciones proc ;subrutina
 	ret
 Printinstrucciones endp
 
+;===========================
+;CREADO POR:  Pedro Guzman
+;Imprime los arrays, y coloca el formato
+;===========================
 arrayPrint proc ;subrutina
-
 
 	push ebp
     mov ebp, esp
@@ -234,6 +287,11 @@ label1:
     ret
 arrayPrint endp
 
+
+;====================
+;CREADO POR: Josue Say
+;Es la interfaz de la opcion 1
+;====================
 ;aqui iprimimos las opciones, y tambien el array
 interfazopcion1 proc
 	push ebp
@@ -246,18 +304,15 @@ interfazopcion1 proc
 	
 	call arrayPrint ;imprime el array
 
+	push OFFSET frogs
+	call printf
+	add esp, 4
+
 
 	push OFFSET hacersaltar
 	call printf
 	add esp, 4
 
-	push OFFSET hacersalir
-	call printf
-	add esp, 4
-
-	push OFFSET selection
-	call printf
-	add esp, 4
 	
 
 	pop esi
@@ -266,6 +321,11 @@ interfazopcion1 proc
     ret
 interfazopcion1 endp
 
+
+;===========================
+;CREADO POR: Mathew Cordero
+;Esta es la logica del juego
+;============================
 JUEGO proc ;subrutina
 	push ebp
     mov ebp, esp
@@ -339,6 +399,10 @@ JUEGO proc ;subrutina
             call printf
 			add esp, 4
         .ENDIF
+	.ELSEIF eax == 0
+		push offset msg_movnovalido
+        call printf
+		add esp, 4
     .ENDIF
     ;====================
 
@@ -349,5 +413,68 @@ JUEGO proc ;subrutina
 JUEGO endp
 
 
+;aqui reseteamos el array cuando la persona sale del interfaz
+;Creador: Pedro Guzman
+;======================
+resetarray proc
+	push ebp
+    mov ebp, esp
+    push esi
+    mov esi, 0
+    mov ebx, sizeof listanumer
+label1:
+	mov eax,arrayreseteador[esi*4]		; DIRECCIONAM. INDIRECTO: Cargar el valor del i-esimo elem de array a eax
+	mov listanumer[esi*4],eax
+	sub ebx, 4			; Decrementar "contador"
+	inc esi 			; Moverse al sig. elem. del array
+	cmp ebx,0			; Aún hay elementos en el array?
+	jne label1			; Sí, entonces repetir proceso desde label1
+    pop esi
+    mov esp, ebp
+	pop ebp
+    ret
+resetarray endp
+
+
+;Verificamos si se gano
+;Creador: Pedro Guzman
+;======================
+ConfirmGameOver proc
+	push ebp
+	mov ebp, esp
+	push esi
+
+	;REINICIAMOS las variables
+	mov verificadorganarExtremo1,0
+	mov verificadorganarExtremo2,0
+
+	;AHORA SUMAMOS
+	mov eax,listanumer[0]
+	mov ebx,listanumer[4]
+	mov ecx,listanumer[8]
+	add eax,ebx
+	add eax,ecx
+	mov verificadorganarExtremo1,eax
+
+	mov eax,0
+	mov ebx,0
+	mov ecx,0
+
+	mov eax,listanumer[16]
+	mov ebx,listanumer[20]
+	mov ecx,listanumer[24]
+	add eax,ebx
+	add eax,ecx
+	mov verificadorganarExtremo2,eax
+	
+	mov eax,0
+	mov ebx,0
+	mov ecx,0
+
+	pop esi
+	mov esp, ebp
+	pop ebp
+	ret
+ConfirmGameOver endp
 
 end
