@@ -445,7 +445,7 @@ ConfirmGameOver proc
 	push esi
 
 	;REINICIAMOS las variables (esto es cada vez que se inicia un nuevo juego)
-	mov verificadorganarExtremo1,0
+	mov verificadorganarExtremo1,0 
 	mov verificadorganarExtremo2,0
 
 	;Sumar el valor de los primeros 3 elementos del array con los números que representan a las ranas
