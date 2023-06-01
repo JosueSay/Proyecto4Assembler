@@ -34,8 +34,8 @@
 				db "                                                                      ",0Ah
 				db 0
 
-	verificadorganarExtremo1 DWORD 0
-	verificadorganarExtremo2 DWORD 0
+	verificadorganarExtremo1 DWORD 0 ;Variable para verficiar la suma de todos los valores del extremo 1
+	verificadorganarExtremo2 DWORD 0 :Variable para verificar la suma de todos los valores del extremo 2
 
 	opcionnovalida byte "OPCION NO VALIDA",0Ah,0
 	ranaactual DWORD 0
