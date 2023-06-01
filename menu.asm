@@ -37,9 +37,9 @@
 	verificadorganarExtremo1 DWORD 0 ;Variable para verficiar la suma de todos los valores del extremo 1
 	verificadorganarExtremo2 DWORD 0 :Variable para verificar la suma de todos los valores del extremo 2
 
-	opcionnovalida byte "OPCION NO VALIDA",0Ah,0
-	ranaactual DWORD 0
-	opcionmenu2 DWORD ?
+	opcionnovalida byte "OPCION NO VALIDA",0Ah,0 ;Mensaje que muestra que la opción elegida por el usuario no es válida
+	ranaactual DWORD 0 ;La 
+	opcionmenu2 DWORD ? ;Esta variable guarda la opción del usuario en el segundo menu
 	saltodelinea byte " ",0Ah,0
 	msg_bienvenida BYTE "Bienvenido al juego de ranas. Escoge la opcion que desees:",0Ah ,0
 	msg_opcion db "Opcion 1. Nuevo Juego", 0Ah
@@ -448,7 +448,7 @@ ConfirmGameOver proc
 	mov verificadorganarExtremo1,0
 	mov verificadorganarExtremo2,0
 
-	;AHORA SUMAMOS 
+	;Sumar el valor de los primeros 3 elementos del array con los números que representan a las ranas
 	mov eax,listanumer[0]
 	mov ebx,listanumer[4]
 	mov ecx,listanumer[8]
@@ -456,17 +456,18 @@ ConfirmGameOver proc
 	add eax,ecx
 	mov verificadorganarExtremo1,eax
 
+	;Reiniciar las variables
 	mov eax,0
 	mov ebx,0
 	mov ecx,0
-
+	;Sumar los valores de los últimos 3 elementos del array con los números que representan a las ranas
 	mov eax,listanumer[16]
 	mov ebx,listanumer[20]
 	mov ecx,listanumer[24]
 	add eax,ebx
 	add eax,ecx
 	mov verificadorganarExtremo2,eax
-	
+	;Reiniciar de nuevo las variables
 	mov eax,0
 	mov ebx,0
 	mov ecx,0
