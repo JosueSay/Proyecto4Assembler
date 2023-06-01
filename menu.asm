@@ -444,11 +444,11 @@ ConfirmGameOver proc
 	mov ebp, esp
 	push esi
 
-	;REINICIAMOS las variables
+	;REINICIAMOS las variables (esto es cada vez que se inicia un nuevo juego)
 	mov verificadorganarExtremo1,0
 	mov verificadorganarExtremo2,0
 
-	;AHORA SUMAMOS
+	;AHORA SUMAMOS 
 	mov eax,listanumer[0]
 	mov ebx,listanumer[4]
 	mov ecx,listanumer[8]
