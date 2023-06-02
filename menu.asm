@@ -48,7 +48,7 @@
 	            db "Opcion 3. Salir del juego", 0Ah
 				db 0
 	
-	respuesta_menu BYTE 0
+	respuesta_menu BYTE 0 ;Almacena la respuesta del usuario en el primer menu
 	
 	n DWORD 7 ;numero de ranas
 	;fmt3 byte "%d",0Ah,0
