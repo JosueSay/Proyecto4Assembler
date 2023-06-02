@@ -2,6 +2,7 @@
 ; Josue Say - 22801, Mathew Cordero - 22982, Javier Chen - 22153, Pedro Guzman - 22111
 ; Descripcion; Mostrar menu del juego
 ; 24/05/2023
+; Diagrama de flujo: https://mermaid.live/edit#pako:eNp9VE1T4kAQ_StdOesBAh48bJXfAqIRtrwMHtqk0dlNZlKThCoVf8z-hr155Y9tTw9GRdwDRaZff703L3mOUptRtB_dOywf4OfhzAAcqIHRqba3sLv7Aw7V2Fa1Qwel0ybVJea3PutQ0CM1JrN63cCOPLa8KlO9-mugs4RjNWzo3gp4LIUnPKQmN8cnaPMEPhH4VKFz-Jhw21rCpxI-a5c58LAgZ4Kcq3NMycEU85rhCRoU9FzQ4Yf5Q4mM1JE1c-0KTj7DguBqQU7wkeAX6oacnuuU8Xtu5sBCSS5bJ11I0rhdx1HV8OAsjBgLeqlOtYH3wZcSHagbm_MsQCi2SDcIsrZKtCp2l5CoCVVU0yf6Sej6VXYuuG73Gxj-b1K-VUOV1F2_D_pcFy9h4jfHXD9hYDuR3KmPytn_quYumEYI-ghL21nrHETvqgtiou7tLjihG5D4g7qVhrKhjAAXaN4mcmosW031EoY95rHY6BTgS8twv6XJilb4i4C7FXahC02mtmAsLFZ_cr2-HS7uhTX662M_HPe-8RBn7AXT-BOZ7IsGrZe8lbyTQtmos9VloVeXb1P7F42xBTqNd_n6argw6DSK1bQpBM8tW8zzym3lLVOQ44cYKKfCk2wr41DZ2165es1rXWyvDKKM-mLb796ObezfXCmmDM2SzqZXpXnyP9JJIJ3EH3Kw9TnjgVrSkwW3vAqyW7QTsTYF6ow_a8-ya1Q_MNVZtM-PGbrfs2hmXjgPm9pOH00a7c8xr2gnasoMazrWyLyKjehJpmvr1sGXf88esT8
 
 ;============
 ;|| HEADER ||
