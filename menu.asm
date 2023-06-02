@@ -50,7 +50,7 @@
 	respuesta_menu BYTE 0
 	
 	n DWORD 7 ;numero de ranas
-	fmt3 byte "%d",0Ah,0
+	;fmt3 byte "%d",0Ah,0
 	;==========================================
 	;|| Variables para mostrar instrucciones ||
 	;==========================================
