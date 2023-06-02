@@ -58,7 +58,7 @@
 	                   db "Las ranas del color AZUL son 'a' y las ranas de color ROJO son 'b'.",0Ah
 	                   db "Toma en cuenta lo siguiente:", 0Ah
 	                   db "I.Solo pueden moverse un espacio a la vez, y debe seleccionar el numero de posicion para saltar.", 0Ah
-	                   db "III Las ranas de distinta especie pueden saltarse otra rana si existe un espacio vacio adelante.", 0Ah
+	                   db "II Las ranas de distinta especie pueden saltarse otra rana si existe un espacio vacio adelante.", 0Ah
 	                   db "III.Sin embargo, las ranas de la misma especie no pueden saltarse entre ellas.", 0Ah
 					   db 0
 	
