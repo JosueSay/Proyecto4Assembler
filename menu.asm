@@ -2,6 +2,7 @@
 ; Josue Say - 22801, Mathew Cordero - 22982, Javier Chen - 22153, Pedro Guzman - 22111
 ; Descripcion; Mostrar menu del juego
 ; 24/05/2023
+; Diagrama de flujo: https://drive.google.com/drive/folders/1eGI2hRnDSyH1bL5WvcrdgPCAk1Cm1bSF?usp=sharing
 
 ;============
 ;|| HEADER ||
